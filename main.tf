@@ -93,7 +93,7 @@ resource "aws_instance" "dev_node" {
 
   //Doesn't affect Terraform state
   provisioner "local-exec" {
-    command = templatefile("ssh-config.tpl", {
+    command = templatefile("${var.host_os}ssh-config.tpl", {
       hostname     = self.public_ip,
       user         = "ubuntu",
       identityfile = "~/.ssh/mtckey"
